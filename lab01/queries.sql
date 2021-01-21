@@ -13,7 +13,7 @@ select * from room where room_type='office' and room_has_window=true;
 select count(*) as 'Number of Labs' from room where square_footage_of_room>500;
 
 -- 5.	Choose one of your buildings.  How many rooms does it have?
-select count(number_of_room) from room where code='SC';
+select sum(room_on_floor) as 'No. of rooms in SC' from room where code='SC';
 
 -- 6.	A list of “full room codes”, meaning a single column that 
 -- 		lists for each room both the building code and the room number separated by a hyphen.
