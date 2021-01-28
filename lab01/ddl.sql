@@ -10,7 +10,7 @@ use csd220_lab1_deepshah;
 -- Creation of 'building' table using specific characteristics
 CREATE TABLE building(
 	name VARCHAR(45) NOT NULL,
-	code VARCHAR(10) NOT NULL,	
+	code CHAR(10) NOT NULL,	
 	square_footage INTEGER UNSIGNED NOT NULL,
 	number_of_floor TINYINT UNSIGNED NOT NULL,
 	time_opened TIME DEFAULT '06:00:00',
@@ -21,7 +21,7 @@ CREATE TABLE building(
 
 -- Creation of 'room' table using specific characteristics
 CREATE TABLE room(
-	code VARCHAR(10) NOT NULL,
+	code CHAR(10) NOT NULL,
 	number_of_room SMALLINT UNSIGNED NOT NULL,
 	room_on_floor SMALLINT UNSIGNED NOT NULL,
 	room_type VARCHAR(20) NOT null,
