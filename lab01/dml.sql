@@ -5,6 +5,6 @@ UPDATE room SET room_type = 'utility' WHERE room_type = 'office' and room_has_wi
 SELECT * FROM room;
 
 -- 2.	Pick ONE of your buildings.  From ONLY this building, remove all bathrooms that have windows.
-DELETE FROM room WHERE room_type = 'bathroom' and room_has_window=1;
+DELETE FROM room WHERE code = 'DHC' and room_type = 'bathroom' and room_has_window=1;
 SELECT * FROM room;
 
