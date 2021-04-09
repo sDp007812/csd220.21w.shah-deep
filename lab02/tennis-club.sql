@@ -1,74 +1,44 @@
 
-drop schema if exists csd220_tennis_club;
-create schema csd220_tennis_club character set utf8mb4;
+drop schema if exists lab05_project;
+create schema lab05_project character set utf8mb4;
 
-use csd220_tennis_club;
+use lab05_project;
 
-drop table if exists recreational_member;
-drop table if exists `match`;
-drop table if exists coach_assignment;
-drop table if exists competitive_member;
-drop table if exists member;
-drop table if exists division;
+drop table if exists superhero;
+drop table if exists skills;
+drop table if exists hero_power;
+-- drop table if exists ;
+-- drop table if exists ;
+-- drop table if exists ;
+-- drop table if exists ;
 
-create table if not exists recreational_member (
-    player_number int not null primary key,
+create table if not exists superhero (
+    id int not null primary key,
+    superhero_name varchar(50) not null,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
-    sex char(1),
-    year_joined year(4) not null,
-    phone varchar(15) not null,
     email varchar(100)
 );
 
-create table if not exists division (
-    division_code char(2) not null primary key,
+create table if not exists skills (
+    id int not null primary key,
     description varchar(100) not null
 );
 
-create table if not exists competitive_member (
-    player_number int not null primary key,
-    first_name varchar(50) not null,
-    last_name varchar(50) not null,
-    sex char(1),
-    year_joined year(4) not null,
-    phone varchar(15) not null,
-    email varchar(100),
-    division_code char(2) not null,
-    constraint fk_competitive_member_member foreign key (division_code) references division(division_code)
+create table if not exists hero_power (
+    constraint fk_superhero_id foreign key (superhero_id) references superhero(id),
+    constraint fk_skill_id foreign key (skill_id) references skills(id)
 );                  
 
-create table if not exists coach_assignment (
-    coach_player_number int  not null,
-    coachee_player_number int not null,
-    constraint fk_coach_member foreign key (coach_player_number) references competitive_member(player_number),
-    constraint fk_coachee_member foreign key (coachee_player_number) references competitive_member(player_number)
-);
-
-create table if not exists `match` ( 
-    match_id int not null primary key auto_increment,
-    `date` date not null,
-    player1_number int,
-    player2_number int,
-    winner_player_number int,
-    winner_sets_won tinyint,
-    division_code char(2) not null,
-    constraint fk_player1_member foreign key (player1_number) references competitive_member(player_number),
-    constraint fk_player2_member foreign key (player2_number) references competitive_member(player_number),
-    constraint fk_winner_member foreign key (winner_player_number) references competitive_member(player_number),
-    constraint fk_match_division_code foreign key (division_code) references division(division_code)
-);
-
-        
-insert into division (division_code, description) values
-('PM', 'Professional Men'),
-('PF', 'Professional Women'),
-('SM', 'Senior Men'),
-('SF', 'Senior Women'),
-('AM', 'Amateur Men'),
-('AF', 'Amateur Women'),
-('YM', 'Youth Men'),
-('YF', 'Youth Women')
+insert into superhero (superhero_name, first_name, last_name, email) values
+('Superman', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Batman', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Wonderwoman', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Shaktiman', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Hanuman dada', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Ganapati data', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Arjuna', 'Abc', 'Xyz', 'abcdef@gmail.com'),
+('Rama', 'Abc', 'Xyz', 'abcdef@gmail.com')
 ;
 
 insert into competitive_member values
