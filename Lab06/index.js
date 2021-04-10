@@ -45,7 +45,7 @@ const da = new DataAccess();
                     const password = prompt("Confirm deletion by entering the user's password: ");
 
                     // TODO: Make sure to handle run-time errors properly
-                    if (await passwordsMatch(userPassword, storedPassword) ) {
+                    if (await passwordsMatch(user.userPassword, user.storedPassword) ) {
                         da.deleteUser(user.id);
                         console.log("User '" + username + "' was deleted successfully!");
                     } else {
