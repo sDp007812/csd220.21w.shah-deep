@@ -26,9 +26,9 @@ const da = new DataAccess();
                 da.getUsers().forEach( u => console.log( u.username ));
                 break;
             case "a":
-                const newHashPassword = await hash(password);
                 username = prompt("Add username: ");
                 const password = prompt("Password: ");
+                const newHashPassword = await hash(password);
 
                 // TODO: Make sure to handle run-time errors properly
                 da.addUser(username, newHashPassword);  // TODO: Properly hash the password
